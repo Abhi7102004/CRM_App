@@ -21,7 +21,7 @@ export const fetchOrders = () => async (dispatch) => {
     dispatch(setLoading(true));
     
     // Use axios directly for the API call since there's an issue with api import
-    const response = await axios.get('http://localhost:5000/api/orders/all-orders');
+    const response = await axios.get('https://crm-app-x305.onrender.com/api/orders/all-orders');
 
     // Ensure that the response data is an array
     const ordersData = response.data?.data || [];
@@ -60,7 +60,7 @@ export const fetchOrderById = (id) => async (dispatch) => {
     
     dispatch(setLoading(true));
     
-    const response = await axios.get(`http://localhost:5000/api/orders/${id}`);
+    const response = await axios.get(`https://crm-app-x305.onrender.com/api/orders/${id}`);
     
     if (!response.data || !response.data.data) {
       throw new Error('Invalid response format');
@@ -91,7 +91,7 @@ export const createNewOrder = (orderData) => async (dispatch) => {
     
     dispatch(setLoading(true));
     
-    const response = await axios.post('/api/orders', orderData);
+    const response = await axios.post('https://crm-app-x305.onrender.com/api/orders', orderData);
     
     if (!response.data || !response.data.data) {
       throw new Error('Invalid response format');
@@ -127,7 +127,7 @@ export const updateExistingOrder = (id, orderData) => async (dispatch) => {
     
     dispatch(setLoading(true));
     
-    const response = await axios.put(`/api/orders/${id}`, orderData);
+    const response = await axios.put(`https://crm-app-x305.onrender.com/api/orders/${id}`, orderData);
     
     if (!response.data || !response.data.data) {
       throw new Error('Invalid response format');
@@ -158,7 +158,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     
     dispatch(setLoading(true));
     
-    const response = await axios.delete(`/api/orders/${id}`);
+    const response = await axios.delete(`https://crm-app-x305.onrender.com/api/orders/${id}`);
     
     if (response.status === 200 || response.status === 204) {
       dispatch(removeOrder(id));
@@ -194,7 +194,7 @@ export const updateOrderStatus = (id, statusData) => async (dispatch) => {
     
     dispatch(setLoading(true));
     
-    const response = await axios.patch(`/api/orders/${id}/status`, statusData);
+    const response = await axios.patch(`https://crm-app-x305.onrender.com/api/orders/${id}/status`, statusData);
     
     if (!response.data || !response.data.data) {
       throw new Error('Invalid response format');
